@@ -1,0 +1,130 @@
+.social-login-link,
+.social-login-link:hover {
+	text-decoration: none;
+	color: #fff
+}
+#login-box {
+	max-width: 500px;
+	margin: 0 auto;
+	margin-top: 25px!important;
+	border-radius: 12px;
+	overflow: hidden;
+	background: #fff;
+	-webkit-box-shadow: 0 6px 30px rgba(0, 0, 0, .2);
+	-moz-box-shadow: 0 6px 30px rgba(0, 0, 0, .2);
+	box-shadow: 0 6px 30px rgba(0, 0, 0, .2)
+}
+.login-box-header {
+	background-color: #fff;
+	text-align: center;
+	padding: 18px 25px 15px;
+	border: none;
+	border-bottom: 1px solid #e0e0e0
+}
+.login-box-content {
+	padding: 20px 20px 10px;
+	background-color: #fff
+}
+.social-login-link {
+	margin-top: 10px
+}
+.fb-login {
+	background-color: #1a538a
+}
+.gp-login {
+	background-color: #db4437;
+	margin-top: 10px
+}
+.login-box-content i {
+	padding: 11px 20px;
+	color: #fff;
+	font-size: 18px
+}
+.box-shadow {
+	box-shadow: 0 2px 2px 0 rgba(41, 48, 59, .24), 0 0 2px 0 rgba(41, 48, 59, .12);
+	border-radius: 5px
+}
+.login-box-seperator {
+	flex: 1 0 auto;
+	min-width: 1px;
+	border-top: 1px solid #dedfe0;
+	height: 1px
+}
+.email-imput {
+	border-radius: 5px;
+	color: #29303b;
+	font-size: 18px;
+	height: auto;
+	padding: 11px 10px 12px 40px
+}
+#login-box-footer p,
+.label-text {
+	color: #8b8b8b
+}
+.form-control {
+	box-shadow: none;
+	font-size: 16px;
+	padding: 10px 12px;
+	transition: border-color .08s ease-in-out, box-shadow .08s ease-in-out
+}
+.email-login {
+	padding: 10px 20px
+}
+#submit-id-submit {
+	margin-top: 0;
+	height: 46px;
+	background-color: #1a8a6f;
+	border: 0;
+	color: #fff;
+	margin-bottom: 8px;
+	padding-top: 0;
+	padding-bottom: 0
+}
+.submit-row {
+	padding: 10px 20px;
+	text-align: center
+}
+#forgot-password-link,
+#register-link {
+	color: #2474c1;
+	text-decoration: none
+}
+#login-box-footer {
+	text-align: center;
+	border-top: 1px solid #dedfe0
+}
+#register-link {
+	padding: 0 10px
+}
+#submit-id-submit:hover {
+	background-color: #198269
+}
+input[type=date],
+input[type=datetime-local],
+input[type=month],
+input[type=time] {
+	box-shadow: none;
+	border: 1px solid rgba(0, 0, 0, .3);
+	padding: 3px 3px 3px 10px
+}
+button,
+input {
+	padding: 3px 3px 3px 10px
+}
+
+select{
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+	padding-left: 40%;
+}
+
+
+select:focus{
+    outline: none;
+}
+
+td:hover{
+	cursor: pointer;
+}
+
