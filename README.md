@@ -5,7 +5,7 @@ This file only works with a PHP sever
 
 ---------------- -VideoProduction.xlsm- ---------------- 
 
-• To open (VideoProduction.xlsm), Open using Excel.
+• To open (VideoProduction.xlsm); Open using Excel.
 
 • Enable any warnings that Excel alerts ("The file will not harm your computer").
 
