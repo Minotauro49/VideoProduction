@@ -1,8 +1,11 @@
 # VideoProduction
 
-To get this file working you need to go to my portfolio and open it from there because it need a sever.
-
-On the other hand you can open "VideoProduction.xlsm" Excel sheet *("Please press enable if excel gives you an alart massage") This area is a teachers point of view.
+This file only works with a PHP sever
 
 
-Step: Explore excel my clicking different Sheets
+---------------- -VideoProduction.xlsm- ---------------- 
+
+• To open (VideoProduction.xlsm), Open using Excel.
+• Enable any warnings that Excel alerts ("The file will not harm your computer").
+• You will see what you edited on the web app displayed on Sheet1
+• You can navigate to other Sheets bellow to see the amount of equipment are in the inventory 
