@@ -32,7 +32,7 @@
             <h4 style="color:rgb(139,139,139);margin-bottom:0px;font-weight:400;font-size:27px;">Borrow / Return Equipment</h4>
         </div>
         <div class="login-box-content">
-            <form id="form">
+            <form id="form" onsubmit="event.preventDefault()">
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -49,8 +49,10 @@
                         </tr>
                     </tbody>
                 </table>
-            </div><button class="btn btn-primary btn-block box-shadow equipmentB" type="submit" id="submit-id-submit" style="background-color:#1a8a6f;">Borrow</button>
-            </form>
+            </div>
+            </form> 
+
+            <button class="btn btn-primary btn-block box-shadow equipmentB" id="submit-id-submit" style="background-color:#1a8a6f;">Borrow</button>
 
             <div class="fb-login box-shadow"></div>
             <div class="table-responsive">
@@ -61,8 +63,8 @@
                             <th>Return date</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr >
+                    <tbody class="equipDisplay">
+                        <tr>
                             <td></td>
                             <td></td>
                         </tr>
@@ -79,6 +81,7 @@
       <script src="js/MainJs.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="https://cdn.rawgit.com/CryptoStore/crypto-js/3.1.2/build/rollups/aes.js"></script>
 </body>
 
 </html>

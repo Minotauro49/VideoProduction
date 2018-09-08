@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Verification</title>
+	<script src="https://cdn.rawgit.com/CryptoStore/crypto-js/3.1.2/build/rollups/aes.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+</head>
+<body>
+
+<div id="alert">Loading...</div>
+<style type="text/css">
+	body{
+		margin: 0px;
+		padding: 0px;
+	}
+	#alert{
+		margin: auto;
+		text-align: center;
+		margin: 2px;
+		background:#00e2ffbd;
+		color: white;
+		border:1px solid #03a9f4;
+		padding: 16px;
+		border-radius: 2px;
+		border-style: dashed;
+	}
+
+	a{
+		transition: all 0.3s;
+		text-decoration: underline;
+		color: #e73d4a;
+	}
+
+</style>
+
+
+
+<script type="text/javascript">
+
+	function VerifyAccount() {
+		var config = {
+		  apiKey: "AIzaSyB02C3leQrgHdHhS35wCuRT8wogpF9D1So",
+		  authDomain: "m2e25d3i6ap65r6o6duc35tion.firebaseapp.com",
+		  databaseURL: "https://m2e25d3i6ap65r6o6duc35tion.firebaseio.com",
+		  projectId: "m2e25d3i6ap65r6o6duc35tion",
+		  storageBucket: "m2e25d3i6ap65r6o6duc35tion.appspot.com",
+		  messagingSenderId: "923396059715"
+		};
+
+		firebase.initializeApp(config);
+
+		var validateAccount = firebase.database().ref("6duc35tionKey");
+			validateAccount.on('value', snap=> validateAccount = snap.val());
+			// validateAccount = validateAccount.path.n[0]
+
+		var div = document.getElementsByTagName('DIV')[0];
+		var verificationkey = window.location.search.replace("?","");
+		var data = "+pzYfUzR+25u0D7Z5Lw04IJ+LmvPXJMpz";
+
+		try{ 
+			var validateUser = CryptoJS.AES.decrypt(verificationkey, data);
+			var keyString = validateUser.toString(CryptoJS.enc.Utf8);
+		}catch(err){
+			keyString = false;
+		}
+
+
+		if (!(keyString == "" || keyString == false)) {
+			console.log("working! Thats good");
+
+			semail = keyString.substr(keyString.indexOf("?")+1,keyString.length);
+			sname = keyString.substr(0,keyString.indexOf("|"));
+			spass = keyString.substr(keyString.indexOf("|")+1,Math.abs(keyString.indexOf("|")+1 - keyString.indexOf("?")));
+
+			// Generate random code
+			function Makekey() {
+			  var text = "";
+			  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+			  for (var i = 0; i < 15; i++)
+			    text += possible.charAt(Math.floor(Math.random() * possible.length));
+			  return text;
+			}
+			
+			firebase.database().ref("Students").child(sname).child(spass).set(true);
+			firebase.database().ref("Students").child(sname).child("Email").set(semail);
+			firebase.database().ref("Students").child(sname).child("ValidKey").set(Makekey());
+			
+			div.style.background = "#B4F7D2";
+			div.style.border = "1px dashed #0C6D38";
+			div.style.color = "#496330";
+			div.innerHTML = "<strong>Success!</strong> You have created an account successfully."
+
+			
+			// sends the user to home page 
+			setTimeout(function(){
+				// var key = CryptoJS.AES.encrypt(keyString, Makekey());
+				self.location = "../index.html?";
+			},1000)
+
+
+		}else{
+			console.log("error occurred when trying to verify your account");
+			div.style.background = "#fbe1e3";
+			div.style.border = "1px dashed #e73d4a";
+			div.style.color = "#e73d4a";
+			div.innerHTML = "<strong>Failed!</strong> Something went wrong please retry to <strong><a href='https://www.w3schools.com'>register again</a></strong>."
+		}
+		
+	}
+
+	VerifyAccount();
+
+</script>
+</body>
+</html>

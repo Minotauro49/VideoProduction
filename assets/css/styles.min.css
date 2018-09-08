@@ -123,8 +123,12 @@ select{
 select:focus{
     outline: none;
 }
-
-td:hover{
+.equipDisplay tr{transition: all 0.2s;}
+.equipDisplay tr:hover{
 	cursor: pointer;
+	background:#212529;
+	color: white;
 }
+
+
 
