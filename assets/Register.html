@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <form id="form"> 
+    <form id="form" onsubmit="event.preventDefault()"> 
         <div class="d-flex flex-column justify-content-center" id="login-box">
             <div class="login-box-header">
                 <h4 style="color:rgb(139,139,139);margin-bottom:0px;font-weight:400;font-size:27px;">Register</h4>
@@ -21,7 +21,7 @@
                 <input type="email" required="" placeholder="Email*" minlength="6" class="email-imput form-control email" style="margin-top:10px;">
                 <input type="password" required="" placeholder="Password*" minlength="6" class="password-input form-control pass" style="margin-top:10px;">
                 <input type="password" required="" placeholder="Confirm Password*" minlength="6" class="password-input form-control passConfirm" style="margin-top:10px;">
-                <label id="label" style="color: #1a8a6f; display: none;">A key was send to the email provided please Confirm it.</label>
+                <label id="label" style="color: #1a8a6f; display: none;"></label>
                 <input type="name" placeholder="Confirm Key" class="password-input form-control ConfirmKey" style="margin-top:10px; display: none;">
             </div>
             <div class="submit-row" style="margin-bottom:8px;padding-top:0px;"><button class="btn btn-primary btn-block box-shadow register" type="submit" id="submit-id-submit" style="background-color:#1a538a;">Register</button>
@@ -36,6 +36,28 @@
     <script src="js/MainJs.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/CryptoStore/crypto-js/3.1.2/build/rollups/aes.js"></script>
+
+    <script type="text/javascript">
+        function sendData(confirmLink,email) {
+
+            $.ajax({
+                type: 'POST',
+                url: 'js/Verification.php',
+                data: {email: email, key: confirmLink },
+                success: function(response) {
+                    $('#label').html("A key was send to the email provided, please confirm it.");
+                }, error: function(err) {
+                	$('#label').html("Something went wrong. Please try refreshing the page");
+                	$('#label').css({"color":"Red"});
+                }
+            });
+
+        }
+    </script>
+
+
 </body>
 
 </html>
