@@ -1,7 +1,11 @@
 # VideoProduction
 
-This file only works with a PHP sever
+To get started, navigate to the link below
+https://brianshisanya.000webhostapp.com/Official_Portfolio/Projects/VideoProduction/index.html
 
+• Once successful please Register your account by clicking (Sign Up!) and procedurally follow the instructructions 
+• After account confirmation please Login.
+• After a successful Login, Click (---Test Sample----); a dropdown selection will appear. Click one of the equipment in the list then continue to put the appropriate return date.
 
 ---------------- -VideoProduction.xlsm- ---------------- 
 
