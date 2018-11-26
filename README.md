@@ -1,13 +1,13 @@
 # VideoProduction
 
 To get started, navigate to the link below
-https://brianshisanya.000webhostapp.com/Official_Portfolio/Projects/VideoProduction/index.html
+https://brianshisanya.com/assets/Projects/Inventory-system/index.html
 
-• Once successful please Register your account by clicking (Sign Up!) and procedurally follow the instructructions 
+• Once successful please Register your account by clicking (Sign Up!) and sequentially follow the instructions.
 
 • After account confirmation please Login.
 
-• After a successful Login, Click (---Test Sample----); a dropdown selection will appear. Click one of the equipment in the list then continue to put the appropriate return date.
+• After a successful Login, Click (---Test Sample----); a drop-down selection will appear. Click one of the equipment on the list then continue to put the appropriate return date.
 
 ---------------- -VideoProduction.xlsm- ---------------- 
 
@@ -17,4 +17,4 @@ https://brianshisanya.000webhostapp.com/Official_Portfolio/Projects/VideoProduct
 
 • You will see what you edited on the web app displayed on Sheet1
 
-• You can navigate to other Sheets bellow to see the amount of equipment are in the inventory 
+• You can navigate to other Sheets below to see the amount of equipment are in the inventory 
