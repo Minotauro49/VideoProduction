@@ -1,6 +1,7 @@
 # VideoProduction
 
 To get started, navigate to the link below
+
 https://brianshisanya.com/assets/Projects/Inventory-system/index.html
 
 • Once successful please Register your account by clicking (Sign Up!) and sequentially follow the instructions.
