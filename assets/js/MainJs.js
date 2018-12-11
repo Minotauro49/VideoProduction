@@ -1,11 +1,8 @@
-
-
 window.onload = function Listen() {
 	var confirmClone = false,
 		active = null,
 		activeKey = [],
-		cnt = -1,
-		equipmentCnt = -1;
+		cnt = -1;
 
 	var dataDaseEquipment = {
 		"Tripod":"#SjJz0",
@@ -74,100 +71,11 @@ window.onload = function Listen() {
 
 	try{ 
 
-		var name = document.querySelector(".name"),
-			email = document.querySelector(".email"),
-			pass = document.querySelector(".pass"),
-			passConfirm = document.querySelector(".passConfirm"),
-			label = document.getElementById('label'),
-			form = document.getElementById('form'),
-			register = document.querySelector(".register"),
-			login = document.querySelector(".login"),
-			recoverP = document.querySelector(".recoverP"),
+		var form = document.getElementById('form'),
 			equipmentB = document.querySelector(".equipmentB"),
 			selectSample = document.getElementById("selectSample");
 
-
 		document.addEventListener('click', function(e){
-
-		  //--------------// login function
-		  if(login == e.target){
-		  	console.log("login sector")
-
-		  	if (form.checkValidity() == true) {
-
-		  		var UserName = name.value.toUpperCase();
-				var passCheck = false;
-
-		  		// check password
-		  		var validateAccount = firebase.database().ref("Students/"+UserName+"");	
-		  		validateAccount.once("value").then(function(snapshot,e) {
-		  			passCheck = snapshot.child(pass.value).val();
-		  			studentKey = snapshot.child("ValidKey").val();
-
-		  			if (passCheck == true) {
-		  				// relocates page
-		  				var key = CryptoJS.AES.encrypt(UserName, studentKey);
-		  				var pageLink = window.location.href;
-		  				self.location = "assets/Borrow.html?"+key+"/Trg"+studentKey;
-
-		  			}else{
-		  				name.style.border="1px solid #dc3545";
-		  				name.setCustomValidity("UserName or Password is incorrect");
-		  			}
-		  		});
-			}		
-		  }
-
-
-
-		  //--------------// register function
-		  if(register == e.target){
-		  	console.log("Registeration sector")
-		  	var UserName = name.value.toUpperCase();
-
-		  	if (!(passConfirm.value == pass.value)) {
-		  		passConfirm.setCustomValidity("Password not matching");
-		  		setTimeout(function(){passConfirm.setCustomValidity("");},2000);
-		  	}
-
-		  	// }else{
-		  	// 	name.setCustomValidity("Your name is already in or database Please consider to login");
-		  	// 	setTimeout(function(){name.setCustomValidity("");},2000);
-		  	// }
-
-
-		  		if (form.checkValidity() == true) {
-		  			var validateAccount = firebase.database().ref("Students/"+UserName+"");	
-		  			validateAccount.once("value").then(function(snapshot) {
-
-					var keyString = UserName+"|"+pass.value+"?"+email.value;
-					var data = "+pzYfUzR+25u0D7Z5Lw04IJ+LmvPXJMpz";
-					var key = CryptoJS.AES.encrypt(keyString, data);
-
-					// send key to provided Email
-					var pageLink = window.location.href;
-					var confirmLink = pageLink.substr(0,pageLink.indexOf("VideoProduction"))+"VideoProduction/assets/Success.html"+"?"+key;
-					sendData(confirmLink,email.value)
-					
-		  			// confirm account
-		  			label.style.display="block";
-		  			name.style.display="none";
-		  			email.style.display="none";
-		  			pass.style.display="none";
-		  			passConfirm.style.display="none";
-		  		});
-		  	}
-		  }
-
-
-
-		  //--------------// recoverP function
-		  if(recoverP == e.target){
-		  	console.log("Recover password sector")
-
-
-		  }
-
 		  //--------------// equipmentB function
 		  var equipmentName = selectSample.options[selectSample.selectedIndex].innerHTML;
 		  	  equipNameInput = document.getElementsByTagName('INPUT')[0];
