@@ -11,8 +11,8 @@ var app_fireBase = {};
     messagingSenderId: "923396059715"
   };
   firebase.initializeApp(config);
-
   app_fireBase = firebase;  
+
 })();
 
 

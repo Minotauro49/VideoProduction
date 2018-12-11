@@ -4,10 +4,20 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipment</title>
+    <title id="namer">Equipment</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="fonts/font-awesome.min.css">
     <link rel="stylesheet" href="css/styles.min.css">
+    <link rel="icon" href="pic1.png">
+
+
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <script src="js/MainJs.js"></script>
+    <script src="js/InitialiseFirebase.js"></script>
+    <script src="js/Logout.js"></script>
 </head>
 
 <body>
@@ -68,20 +78,16 @@
                             <td></td>
                             <td></td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>
             <div class="gp-login box-shadow"></div>
 
         </div>
-        <div class="submit-row" style="margin-bottom:8px;padding-top:0px;"><a href="../index.html" style="text-decoration: none;"><button class="btn btn-primary btn-block box-shadow SignOut" type="submit" id="submit-id-submit" style="background-color:#2474c1;">Sign out</button></a></div>
+        <div class="submit-row" style="margin-bottom:8px;padding-top:0px;">
+            <button class="btn btn-primary btn-block box-shadow SignOut" type="submit" id="submit-id-submit" style="background-color:#2474c1;" onclick="Logout()">Sign out</button>
+        </div>
     </div>
-    <script src="js/jquery.min.js"></script>
-      <script src="js/MainJs.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-    <script src="https://cdn.rawgit.com/CryptoStore/crypto-js/3.1.2/build/rollups/aes.js"></script>
 </body>
 
 </html>
