@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/styles.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
     <script src="assets/js/InitialiseFirebase.js"></script>
@@ -18,6 +18,59 @@
 </head>
 
 <body>
+    
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 style="text-align: center;">This page is going to automatically download a "VideoProduction.xlsm"</h6>
+                </div>
+                <div class="modal-body">
+                    <h6 style="text-align: center;">Unzip the file and follow instructions.</h6>
+                    <h2 style="text-align: center; color:#1a8a6f;" id="CountDown">10...</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#myModal').modal('show');
+
+            var countDown = 10;
+            var intCounter = setInterval(function () {
+                countDown--;
+                $("#CountDown").text(countDown + "...");
+
+                if (countDown <= 0) {
+                    clearInterval(intCounter);
+                    // $('#myModal').modal('hide');
+                    $($("button")[0]).attr("class", "btn btn-outline-success");
+                    $($("button")[0]).text("Done");
+                    $("#CountDown").animate({ height: 0 }, 200, function () {
+                        $("#CountDown").css("display", "none");
+                    });
+
+                    // Download file
+                    var link = document.createElement('a');
+                    document.body.appendChild(link);
+                    link.href = "VideoProduction.xlsm";
+                    link.click();
+                }
+            }, 1000);
+
+            // Cancel
+            $($("button")[0]).click(function () {
+                if ($(this).text() == "Cancel") {
+                    clearInterval(intCounter);
+                }
+            })
+        });
+    </script>
 
     <form id="form">
         <div class="d-flex flex-column justify-content-center" id="login-box">

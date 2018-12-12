@@ -1,8 +1,8 @@
 window.onload = function Listen() {
 	var confirmClone = false,
+		tracker = 0,
 		active = null,
-		borrowedEqip = [],
-		cnt = -1;
+		borrowedEqip = [];
 
 	var dataDaseEquipment = {
 		"Tripod":"#SjJz0",
@@ -23,6 +23,8 @@ window.onload = function Listen() {
 	// Logout
 	var firebase = app_fireBase;
 	var uid = null;
+	var tbody = document.getElementsByTagName('tbody')[1];
+
 	firebase.auth().onAuthStateChanged(function (user) {
 		var namer = document.getElementById("namer");
 		namer.innerHTML = user.displayName;
@@ -30,61 +32,26 @@ window.onload = function Listen() {
 		 //--------------// Load Student data
 		var validateAccount = firebase.database().ref(user.uid);
 		validateAccount.once("value").then(function(snapshot,e) {
-		var dataBase = JSON.parse(JSON.parse(snapshot.val())["EqupBorrowed"])
+		borrowedEqip = JSON.parse(JSON.parse(snapshot.val())["EqupBorrowed"])
 
-			for (let index = 0; index < dataBase.length/2; index++) {
-				console.log(0)
+			for (let index = 0; index < borrowedEqip.length/2; index++) {
+				var tbody = document.getElementsByTagName('tbody')[1];
+				if (confirmClone == true) {
+					tracker+= 2;
+					var tr = tbody.getElementsByTagName('tr')[0];
+					var cloneTr = tr.cloneNode(true);
+					cloneTr.getElementsByTagName('td')[0].innerHTML = borrowedEqip[tracker];
+					cloneTr.getElementsByTagName('td')[1].innerHTML = borrowedEqip[tracker+1];
+					tbody.appendChild(cloneTr);
+				}else{ 
+					confirmClone = true;
+					tbody.getElementsByTagName('tr')[0].classList.remove("dipClass");
+					tbody.getElementsByTagName('tr')[0].getElementsByTagName('td')[0].innerHTML = borrowedEqip[index];
+					tbody.getElementsByTagName('tr')[0].getElementsByTagName('td')[1].innerHTML = borrowedEqip[index+1];
+				}
 			}
-				
-		// 		cnt++;
-		// 		activeKey[cnt] = key;
-
-		// 		var tbody = document.getElementsByTagName('tbody')[1];
-		// 		if (confirmClone == true) {
-		// 			var tr = tbody.getElementsByTagName('tr')[0];
-		// 			var cloneTr = tr.cloneNode(true);
-		// 				cloneTr.getElementsByTagName('td')[0].innerHTML= keyNames[key];
-		// 				cloneTr.getElementsByTagName('td')[1].innerHTML= keyDates[key];
-		// 				tbody.appendChild(cloneTr);
-		// 		}else{ 
-		// 			confirmClone = true;
-		// 			tbody.getElementsByTagName('tr')[0].getElementsByTagName('td')[0].innerHTML= keyNames[key];
-		// 			tbody.getElementsByTagName('tr')[0].getElementsByTagName('td')[1].innerHTML= keyDates[key];
-		// 		}
-		// });
-		// confirmClone = false;
-
 		});
 
-
-
-	 //--------------// Load Student data
-	// var validateAccount = firebase.database().ref("Students/"+StudentName()+"");	
-
-	// validateAccount.once("value").then(function(snapshot,e) {
-	// 	keyNames = snapshot.child("Borrowed Equipments").val();
-	// 	keyDates = snapshot.child("Return Dates").val();
-		
-	// 	for (var key in keyNames) {
-	// 		cnt++;
-	// 		activeKey[cnt] = key;
-
-	// 		var tbody = document.getElementsByTagName('tbody')[1];
-	// 		if (confirmClone == true) {
-	// 			var tr = tbody.getElementsByTagName('tr')[0];
-	// 			var cloneTr = tr.cloneNode(true);
-	// 				cloneTr.getElementsByTagName('td')[0].innerHTML= keyNames[key];
-	// 				cloneTr.getElementsByTagName('td')[1].innerHTML= keyDates[key];
-	// 				tbody.appendChild(cloneTr);
-	// 		}else{ 
-	// 			confirmClone = true;
-	// 			tbody.getElementsByTagName('tr')[0].getElementsByTagName('td')[0].innerHTML= keyNames[key];
-	// 			tbody.getElementsByTagName('tr')[0].getElementsByTagName('td')[1].innerHTML= keyDates[key];
-	// 		}
-	// 	}
-	// });
-	// confirmClone = false;
-	
 	try{ 
 
 		var form = document.getElementById('form'),
@@ -117,16 +84,17 @@ window.onload = function Listen() {
 		  			if (currentDate.getDate() < 9) {date = "-0"+currentDate.getDate()}else{date = "-"+currentDate.getDate()}
 
 		  			if (returnDate.value > currentDate.getFullYear()+month+date) {
-		  				var tbody = document.getElementsByTagName('tbody')[1];
 
 		  				if (confirmClone == true) {
 							var tr = tbody.getElementsByTagName('tr')[0];
-		  					var cloneTr = tr.cloneNode(true);
+							  var cloneTr = tr.cloneNode(true);
+								tbody.getElementsByTagName('tr')[0].classList.remove("dipClass");
 		  						cloneTr.getElementsByTagName('td')[0].innerHTML= equipNameInput.value;
 		  						cloneTr.getElementsByTagName('td')[1].innerHTML= returnDate.value;
 		  						tbody.appendChild(cloneTr);
 		  				}else{ 
-		  					confirmClone = true;
+							confirmClone = true;
+							tbody.getElementsByTagName('tr')[0].classList.remove("dipClass");
 		  					tbody.getElementsByTagName('tr')[0].getElementsByTagName('td')[0].innerHTML =  equipNameInput.value;
 		  					tbody.getElementsByTagName('tr')[0].getElementsByTagName('td')[1].innerHTML =  returnDate.value;
 						}
@@ -163,40 +131,52 @@ window.onload = function Listen() {
 		  	}
 
 
-// 		  	//--------------// Return 
-// 		  	var submit = document.getElementById('submit-id-submit');
+		  	//--------------// Return 
+		  	var submit = document.getElementById('submit-id-submit');
+		  	if(equipmentB == e.target && equipmentB.innerHTML == "Return"){
+				  var parent = document.querySelector(".equipDisplay");
 
-// 		  	if(equipmentB == e.target && equipmentB.innerHTML == "Return"){
-// 		  		var parent = document.querySelector(".equipDisplay");
-// 		  		parent.removeChild(active);
-// 		  		firebase.database().ref("Students/"+StudentName()+"/Return Dates").child(rmvKey).remove();
-// 		  		firebase.database().ref("Students/"+StudentName()+"/Borrowed Equipments").child(rmvKey).remove();
-// 		  	}
+				//   Stops an error when you completly remove child elements
+				let elmIndex = 0
+				for (let index = 0; index < (parent.childNodes).length; index++) {
+					if ((parent.childNodes)[index] == active) { if (index == 1) { elmIndex = 0; break }else{elmIndex = (index-2)*2; break}}
+				}
 
-// 		  	if(e.target.tagName == "TD"){
-// 		  		console.log("Return equipment sector")
-// 		  		submit.innerHTML = "Return";
-// 		  		submit.style.background="#dc3545";
+				if (parent.childElementCount > 1) {
+					parent.removeChild(active);
+				} else {
+					tbody.getElementsByTagName('tr')[0].className = "dipClass";
+				}
 
-// 		  		if (active != null) {
-// 		  			active.style.background="";
-// 		  			active.style.color="";
-// 		  		}
+				borrowedEqip.splice(elmIndex,1)
+				borrowedEqip.splice(elmIndex, 1)
+				jsonData = JSON.stringify({ "FullName": user.displayName, "EqupBorrowed": JSON.stringify(borrowedEqip) });
+				firebase.database().ref(user.uid).set(jsonData);
+		  	}
 
-// 		  		e.path[1].style.background="#212529";
-// 		  		e.path[1].style.color="white";
-// 		  		active = e.path[1];
-// 		  		rmvKey = activeKey[e.path[1].rowIndex-1];
+		  	if(e.target.tagName == "TD"){
+		  		console.log("Return equipment sector")
+		  		submit.innerHTML = "Return";
+		  		submit.style.background="#dc3545";
 
-// 		  	}else{
-// 		  		submit.innerHTML = "Borrow";
-// 		  		submit.style.background="#1a8a6f";
+		  		if (active != null) {
+		  			active.style.background="";
+		  			active.style.color="";
+		  		}
 
-// 		  		if (active != null) {
-// 		  			active.style.background="";
-// 		  			active.style.color="";
-// 		  		}
-// 		  	}
+		  		e.path[1].style.background="#212529";
+		  		e.path[1].style.color="white";
+		  		active = e.path[1];
+
+		  	}else{
+		  		submit.innerHTML = "Borrow";
+		  		submit.style.background="#1a8a6f";
+
+		  		if (active != null) {
+		  			active.style.background="";
+		  			active.style.color="";
+		  		}
+		  	}
 
 
 		});
