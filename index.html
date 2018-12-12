@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <script src="assets/js/InitialiseFirebase.js"></script>
+    <script src="assets/js/Login.js"></script>
+    <script src="assets/js/guide.js"></script>
+</head>
+
+<body>
+    <button class="btn btn-info" style="margin:20px;" id="Showinfor">Instructions</button>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 style="text-align: center;">This page is going to automatically download a "VideoProduction.xlsm"</h6>
+                </div>
+                <div class="modal-body">
+                    <h6 style="text-align: center;">Unzip the file and follow instructions.</h6>
+                    <h2 style="text-align: center; color:#1a8a6f;" id="CountDown">10...</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form id="form">
+        <div class="d-flex flex-column justify-content-center" id="login-box">
+            <div class="login-box-header">
+                <h4 style="color:rgb(139,139,139);margin-bottom:0px;font-weight:400;font-size:27px;">Login</h4>
+            </div>
+
+
+            <div id="login-box-footer" style="padding:10px 20px;padding-bottom:23px;padding-top:18px;">
+                <div class="container mt-1">
+                    <div id="firebaseui-auth-container"></div>
+                    <div id="loader">Loading...</div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

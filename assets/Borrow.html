@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="namer">Equipment</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+    <link rel="icon" href="pic1.png">
+
+
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <script src="js/MainJs.js"></script>
+    <script src="js/InitialiseFirebase.js"></script>
+    <script src="js/Logout.js"></script>
+</head>
+
+<body>
+    <select id="selectSample">
+        <option hidden>---------Test a Sample---------</option>
+        <option value="0">Tripod</option>
+        <option value="0">Camera Light</option>
+        <option value="0">Wireless Microphone</option>
+        <option value="0">Camera lens</option>
+        <option value="0">Shotgun Microphone</option>
+        <option value="0">Boom Pole</option>
+        <option value="0">Wireless Microphone</option>
+        <option value="0">Audio (XLR) Cables</option>
+        <option value="0">Light Reflector</option>
+        <option value="0">Video Camera</option>
+        <option value="0">Headphones</option>
+        <option value="0">Camera</option>>
+    </select>
+
+    <div class="d-flex flex-column justify-content-center" id="login-box">
+        <div class="login-box-header">
+            <h4 style="color:rgb(139,139,139);margin-bottom:0px;font-weight:400;font-size:27px;">Borrow / Return Equipment</h4>
+        </div>
+        <div class="login-box-content">
+            <form id="form" onsubmit="event.preventDefault()">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" required="" placeholder="Equipment Name"></td>
+                            <td><input type="text" required="" placeholder="#ID Number"></td>
+                            
+                        </tr>
+                        <tr>
+                            <td><label>Return date</label> <br><input type="date" required="" style="width:191px;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </form> 
+
+            <button class="btn btn-primary btn-block box-shadow equipmentB" id="submit-id-submit" style="background-color:#1a8a6f;">Borrow</button>
+
+            <div class="fb-login box-shadow"></div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Return date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="equipDisplay">
+                        <tr class="dipClass">
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="gp-login box-shadow"></div>
+
+        </div>
+        <div class="submit-row" style="margin-bottom:8px;padding-top:0px;">
+            <button class="btn btn-primary btn-block box-shadow SignOut" type="submit" id="submit-id-submit" style="background-color:#2474c1;" onclick="Logout()">Sign out</button>
+        </div>
+    </div>
+</body>
+
+</html>
