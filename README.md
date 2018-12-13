@@ -7,7 +7,9 @@
   
 # Step 2:
   Once successful, you will now be brought to a page where you do the borrowing. 
+  
   Please proceed to click "---------Test a Sample---------".
+  
   A drop-down menu will appear, again proceeding to click any of the items.
   
 
@@ -17,9 +19,13 @@
 
 # Step 4:
   Click button labelled "Borrow".
+  
   You will notice the item you borrowed will appear below the button. That is your inventory highlighting what you have borrowed.
+  
   If you want to return the item, please proceed to hover the specific item in the inventory and clicking on it.
+  
   You will notice the Borrow button changes into a Return button.
+  
   Click "Return" The item will appropriately be removed from your inventory
   
 
