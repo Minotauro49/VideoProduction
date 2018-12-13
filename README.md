@@ -1,6 +1,4 @@
-# VideoProduction
-
-This file only works with a PHP sever
+﻿		    # VideoProduction
 
 
 ---------------- -VideoProduction.xlsm- ---------------- 
@@ -9,6 +7,6 @@ This file only works with a PHP sever
 
 • Enable any warnings that Excel alerts ("The file will not harm your computer").
 
-• You will see what you edited on the web app displayed on Sheet1
+• You will see what you edited on the web app displayed on the graph
 
-• You can navigate to other Sheets bellow to see the amount of equipment are in the inventory 
+• You can navigate to other pages below, Example BorrowedEqp and DataBase 

@@ -21,7 +21,7 @@ $(document).ready(function () {
                     // Download file
                     var link = document.createElement('a');
                     document.body.appendChild(link);
-                    link.href = "VideoProduction.xlsm";
+                    link.href = "VideoProduction.zip";
                     link.click();
                 }
             }, 1000);
